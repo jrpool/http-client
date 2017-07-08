@@ -43,7 +43,9 @@ Make that parent directory your working directory, by executing, for example:
 
 ## Usage and Examples
 
-Enter `node hget «url»`, replacing `«url»` with any URL, to get an output of the chunks of data received by an HTTP client from the resource at that URL, one chuck per line.
+Enter `node hget «url»`, replacing `«url»` with any URL, to get an output of the chunks of data received by an HTTP client from the resource at that URL, one chuck per line. For example:
+
+`node hget 'http://geezer.pro'`
 
 To perform linting, execute `npm run lint`.
 

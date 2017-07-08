@@ -6,29 +6,18 @@
 // Import the `http` module.
 const http = require('http');
 
-// Define a function to output a string.
-const outputString = string => {console.log(string);};
+// Define a function to output a string and a trailer line.
+const outputStringWithTrailer = (string) => {
+  console.log(string);
+  console.log('='.repeat(50));
+};
 
 /*
   Define a function to add a listener for “data” events emitted by a
   specified Readable Stream and make outputString process their chunks. See:
   https://nodejs.org/dist/latest-v8.x/docs/api/stream.html#stream_event_data
 */
-const dataListen = readable => {readable.on('data', outputString);};
-
-/*
-  Define a function to return the first argument or, if the argument count
-  is not 1, the argument is not a string, or the argument is a blank string,
-  undefined.
-*/
-const arg0IfValid = () => {
-  // Identify the command-line arguments.
-  const args = process.argv.slice(2);
-  // Return the first if it is the only argument and nonblank.
-  if (args.length === 1 && typeof args[0] === 'string' && args[0].length) {
-    return args[0];
-  }
-};
+const dataListen = readable => {readable.on('data', outputStringWithTrailer);};
 
 /*
   Define a function to act as a one-time listener for a specified response
@@ -74,10 +63,24 @@ const hget = url => {
     https://nodejs.org/dist/latest-v8.x/docs/api/http.html#http_http_get_options_callback
     https://nodejs.org/dist/latest-v8.x/docs/api/stream.html#stream_event_error
   */
-  http.get({hostname: url}, responseListener).on(
+  http.get(url, responseListener).on(
     'error',
     (err) => console.error('Error: ' + err.message)
   );
+};
+
+/*
+  Define a function to return the first argument or, if the argument count
+  is not 1, the argument is not a string, or the argument is a blank string,
+  undefined.
+*/
+const arg0IfValid = () => {
+  // Identify the command-line arguments.
+  const args = process.argv.slice(2);
+  // Return the first if it is the only argument and nonblank.
+  if (args.length === 1 && typeof args[0] === 'string' && args[0].length) {
+    return args[0];
+  }
 };
 
 /*
