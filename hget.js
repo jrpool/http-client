@@ -14,7 +14,7 @@ const outputString = string => {console.log(string);};
   specified Readable Stream and make outputString process their chunks. See:
   https://nodejs.org/dist/latest-v8.x/docs/api/stream.html#stream_event_data
 */
-const dataListen = readable => {readable.on('data', outputString)};
+const dataListen = readable => {readable.on('data', outputString);};
 
 /*
   Define a function to return the first argument or, if the argument count
@@ -27,8 +27,8 @@ const arg0IfValid = () => {
   // Return the first if it is the only argument and nonblank.
   if (args.length === 1 && typeof args[0] === 'string' && args[0].length) {
     return args[0];
-  };
-}
+  }
+};
 
 /*
   Define a function to act as a one-time listener for a specified response
@@ -41,9 +41,9 @@ const responseListener = response => {
   // If the status is other than OK:
   if (status !== 200) {
     // Identify an error and its message.
-    error = new Error('Failed with status ' + status);
+    const err = new Error('Failed with status ' + status);
     // Output its message.
-    console.error(error.message);
+    console.error(err.message);
     // Consume the response.
     response.resume();
     // Quit.
