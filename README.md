@@ -8,7 +8,7 @@ Node HTTP client application, fulfilling specs of learnyounode workshop.
 ## modules
 
 ```
-app.js
+hget.js
 ```
 
 ## Discussion
@@ -43,7 +43,7 @@ Make that parent directory your working directory, by executing, for example:
 
 ## Usage and Examples
 
-Enter `node app «url»`, replacing `«url»` with any URL, to get an output of the chunks of data received by an HTTP client from the resource at that URL.
+Enter `node hget «url»`, replacing `«url»` with any URL, to get an output of the chunks of data received by an HTTP client from the resource at that URL, one chuck per line.
 
 To perform linting, execute `npm run lint`.
 
