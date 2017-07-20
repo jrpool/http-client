@@ -17,6 +17,8 @@ This application demonstrates the use of the `get` method of Node’s `http` mod
 
 The application fulfills the specifications of the “HTTP Client” workshop of [learnyounode][lyn] curriculum and is part of the HTTP Client module in Phase 2 of the curriculum of [Learners Guild][lg].
 
+If the server replies with any status code other than 200, the application reports the status code. It does not follow redirects.
+
 ## Installation and Setup
 
 0. These instructions presuppose that [npm][npm] is installed.
@@ -43,9 +45,9 @@ Make that parent directory your working directory, by executing, for example:
 
 ## Usage and Examples
 
-Enter `node hget «url»`, replacing `«url»` with any URL, to get an output of the chunks of data received by an HTTP client from the resource at that URL, one chuck per line. For example:
+Enter `node hget «url»`, replacing `«url»` with any URL, to get an output of the chunks of data received by an HTTP client from the resource at that URL, one chunck per line. For example:
 
-`node hget 'http://geezer.pro'`
+`node hget 'http://geezer.pro/main/'`
 
 To perform linting, execute `npm run lint`.
 
